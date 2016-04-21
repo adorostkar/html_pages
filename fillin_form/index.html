@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>TDB16 registration</title>
+    <link rel="stylesheet" media="screen" href="style.css" >
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<body>
+    <form class="registration_form" action="data.php" method="POST">
+        <div>
+             <h2>Registration</h2>
+             <span class="required_notification">* Denotes Required Field</span>
+        </div>
+        <div>
+            <label for="fullname">Full name:</label>
+            <input type="text" name="fullname" id="fullname" required/>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required/>
+            <span class="form_hint">format "name@domain.com"</span>
+        </div>
+        <div>
+            <label for="organization">Organization:</label>
+            <input type="text" name="organization" id="organization" required/>
+            <span class="form_hint">University or research center</span>
+        </div>
+        <div>
+            <input type="checkbox" name="has_presentation" id="has_presentation" onclick="checkAddress(this)"/>
+            <label for="has_presentation">I would like to have a presetation:</label>
+        </div>
+        <div id="abstract_row" style="display:none">
+            <label for="abstract" name="for_abs">Abstract:</label>
+            <textarea name="abstract" id="abstract" cols="40" rows="10"></textarea>
+        </div>
+        <div class="g-recaptcha" data-sitekey="6Ld-wx0TAAAAAE4-_OaPBGJARlErU7XuVHYxkuAX" data-callback="enableBtn"></div>
+        <div>
+            <button id="btnsub" class="submit" name="submit" type="submit">Submit</button>
+        </div>
+    </form>
+    <script src="form.js" charset="utf-8"></script> 
+</body>
+</html>

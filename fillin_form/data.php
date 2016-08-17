@@ -22,7 +22,10 @@
     $name = $_POST['fullname'];
     $email = $_POST['email'];
     $org = $_POST['organization'];
-    $hasp = $_POST['has_presentation'];
+    // If has_presentation is set, get its value
+    if(isset($_POST['has_presentation'])){
+        $hasp = $_POST['has_presentation'];
+    }
     $abstract = $_POST['abstract'];
     $from = 'TDB16';
     $to = 'ali.dorostkar@it.uu.se';
@@ -54,7 +57,10 @@
         $body .= "NO";
     }
 
-    $attachment = chunk_split(base64_encode(file_get_contents($_FILES['file']['tmp_name'])));
+    $attachment = '';
+    if($_FILES['file']['tmp_name'] != ''){
+        $attachment = chunk_split(base64_encode(file_get_contents($_FILES['file']['tmp_name'])));
+    }
     $filename = $_FILES['file']['name'];
 
     $boundary =md5(date('r', time()));
@@ -62,6 +68,7 @@
     $headers = "From: $from\r\nReply-To: $from";
     $headers .= "\r\nMIME-Version: 1.0\r\nContent-Type: multipart/mixed; boundary=\"_1_$boundary\"";
 
+    // Create the body of the email with the correct attachement.
     $body="This is a multi-part message in MIME format.
 
 --_1_$boundary

@@ -27,6 +27,7 @@
         $hasp = $_POST['has_presentation'];
     }
     $abstract = $_POST['abstract'];
+    $abstitle = $_POST['title'];
     $from = 'TDB16';
     $to = 'ali.dorostkar@it.uu.se';
     
@@ -52,7 +53,8 @@
     // Construct the body of the message
     $body = "From: $name\n\n E-Mail: $email\n\n Organization: $org\n\n Wants to present: ";
     if(isset($hasp) && $hasp == 'on'){
-        $body .= "YES\n\n Abstract:\n $abstract";
+        $body .= "YES\n\n Abstract Title:\n $abstitle";
+        $body .= "\n\n Abstract:\n $abstract";
     }else{
         $body .= "NO";
     }
